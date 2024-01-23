@@ -1,1 +1,21 @@
-<p>todo-child works!</p>
+<section>
+  <div class="container bg-light rounded-3">
+    <table class="table table-hover table-bordered table-striped">
+      <thead scope="row" class="center-block">
+        <tr class="text-center">
+          <th>Task</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (todo of todoList; track todo; let idx=$index) {
+        <tr (click)="onSelect(idx)" [ngClass]="{'table-active' : todo.active}">
+          <td>{{todo.task}}</td>
+          <td>{{todo.description}}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+

@@ -1,12 +1,13 @@
 import { Component, Output, EventEmitter } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { Todo } from "../common/todo";
+import { Todo } from "../common/Todo";
 
 @Component({
   selector: 'app-todo-child',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './todo-child.component.html',
   styleUrl: './todo-child.component.css'
 })
@@ -21,7 +22,7 @@ export class TodoChildComponent {
       this. todoList[this.selectIndex].active = false;
     }
     this.selectIndex = index;
-    this.todoList[this.selIndex].active = true;
+    this.todoList[this.selectIndex].active = true;
   }
 
   deleteTodo (): void {
@@ -29,7 +30,7 @@ export class TodoChildComponent {
       this.todoList.splice(this.selectIndex, 1);
       this.eventTodoListLen.emit(this.todoList.length);
     }
-    this.selIndex = -1;
+    this.selectIndex = -1;
   }
 
   addTodo (todo: Todo): void {
