@@ -1,0 +1,17 @@
+<section>
+  <table>
+    <thead>
+      <th>Task</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      @for (todo of todoList; track todo; let i=$index) {
+      <tr (click="onSelect(i)" [ngClass]="{'table-active' : todo.active}">
+        <td>{{todo.task}}</td>
+        <td>{{todo.description}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
