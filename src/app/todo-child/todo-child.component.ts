@@ -1,22 +1,22 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { Todo } from "../common/Todo";
 
 @Component({
-  selector: 'app-todo-child',
+  selector: "app-todo-child",
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './todo-child.component.html',
-  styleUrl: './todo-child.component.css'
+  templateUrl: "./todo-child.component.html",
+  styleUrl: "./todo-child.component.css"
 })
-export class TodoChildComponent {
-  @Output() eventTodoListLen = new EventEmitter();
 
+export class TodoChildComponent{
+  @Output() eventTodoListLen = new EventEmitter();
   todoList: Todo[] = [];
   selectIndex: number = -1;
 
-  onSelect (index: number): void {
+  onSelect(index: number): void {
     if (this.selectIndex >= 0) {
       this.todoList[this.selectIndex].active = false;
     }
@@ -25,14 +25,14 @@ export class TodoChildComponent {
   }
 
   deleteTodo (): void {
-    if (this.selectIndex >= 0) {
+    if(this.selectIndex >= 0){
       this.todoList.splice(this.selectIndex, 1);
       this.eventTodoListLen.emit(this.todoList.length);
     }
     this.selectIndex = -1;
   }
 
-  addTodo (todo: Todo): void {
+  addTodo (todo: Todo): void{
     this.todoList.push(todo);
     this.eventTodoListLen.emit(this.todoList.length);
   }

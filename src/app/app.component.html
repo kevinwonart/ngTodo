@@ -1,0 +1,18 @@
+<h1>{{ title }}</h1>
+
+<section>
+  <div>
+    <label>Task: </label>
+    <input #task placeholder="Enter Task" />
+  </div>
+  <div>
+    <label>Description: </label>
+    <input #description placeholder="Enter Description" />
+  </div>
+  <div>
+    <button (click)="onAdd(task, description)">Add</button>
+    <button (click)="onDelete()">Delete</button>
+  </div>
+</section>
+
+<app-todo-child (eventTodoListLen)="onEventTodoListLen($event)"></app-todo-child>
